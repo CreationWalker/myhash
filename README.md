@@ -1,2 +1,2 @@
 # myhash
-Using Newton's Method for approximating *x* in function *x^b=b* and return result into base16 
+Using Math.pow() method for approximating *x* in function *x^b=b* and return result into base16 
