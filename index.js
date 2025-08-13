@@ -1,4 +1,3 @@
-
 function f(word) {
 //let x = Math.random()*10**16
 let x = parseInt(word, 36)
