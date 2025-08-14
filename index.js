@@ -23,11 +23,10 @@ let x = Math.random()*10**16
 exp = BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)
 return bigIntToHex(BigInt(exp))
 }
-function base16(word) {
-    BigInt(word).toString(16)
-}
-function base10(n) {
-    BigInt(n).toString(10)
+function base10(hexString) {
+ let bigIntValue = BigInt("0x" + hexString);
+ let decimalString = bigIntValue.toString(10);
+ return decimalString
 }
 // Newton's Method implementation in JavaScript
 function newtonsMethod(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
