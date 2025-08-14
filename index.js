@@ -11,10 +11,11 @@ let b16 = exp.toString(16)
 return b16
 }
 function base10(n) {
-    return parseInt(n, 16)
+    return parseInt(n).toString(10)
 }
 // Newton's Method implementation in JavaScript
-function decipher(base10(x), initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
+function decipher(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
+    let x = base10(x)
     let b = initialGuess;
     for (let i = 0; i < maxIterations; i++) {
         // f(b) = x^b - b
