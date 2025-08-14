@@ -1,5 +1,4 @@
 function bigIntToHex(bigInt) {
-  bigInt = BigInt(bigInt)
   if (bigInt === 0n) return "0";
   const hexChars = "0123456789abcdef";
   let result = "";
@@ -16,13 +15,13 @@ function bigIntToHex(bigInt) {
 }
 function cipher(word) {
 let x = parseInt(word, 36)
-let exp = BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)
-return bigIntToHex(exp)
+exp = BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)
+return bigIntToHex(BigInt(exp))
 }
 function gen() {
 let x = Math.random()*10**16
-let exp = BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)
-return bigIntToHex(exp)
+exp = BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)
+return bigIntToHex(BigInt(exp))
 }
 function base16(word) {
     BigInt(word).toString(16)
