@@ -34,7 +34,7 @@ function decipher(x = base10(x), initialGuess = 0.6, tolerance = 1e-12, maxItera
 
 // Solve x^b = b for x = 2
 let x = 2.0;
-let result = newtonsMethod(x, 0.6);
+let result = newtonsMethod(x, 0.6)*10**16;
 console.log(`Solution: b = ${result}`);
 
 // Convert to base36
