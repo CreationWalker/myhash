@@ -16,37 +16,36 @@ function base16(word) {
 function base10(n) {
     n.toString(10)
 }
-function decipher(base10(x)) {
-    if (typeof x !== 'number') {
-        x = Number(x);
+// Newton's Method implementation in JavaScript
+function newtonsMethod(base10(x), initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
+    let b = initialGuess;
+    for (let i = 0; i < maxIterations; i++) {
+        // f(b) = x^b - b
+        let f_b = Math.pow(x, b) - b;
+        // f'(b) = x^b * ln(x) - 1
+        let f_prime_b = Math.pow(x, b) * Math.log(x) - 1;
+        // Check if derivative is too small
+        if (Math.abs(f_prime_b) < 1e-15) break;
+        // Newton's iteration
+        let b_new = b - f_b / f_prime_b;
+        // Check convergence
+        if (Math.abs(b_new - b) < tolerance) return b_new;
+        b = b_new;
     }
-    if (isNaN(x) || x <= 0) {
-        return "NaN";
-    }
-    if (x === 1) {
-        return "1";
-    }
-    const xExp = Math.exp(1 / Math.E); // Fixed extra parenthesis
-    if (x > 1 && x > xExp) {
-        return "NaN";
-    }
-    let b = (x < 1) ? 0.5 : 1.5;
-    const MAX_ITER = 100;
-    const TOL = 1e-8;
-    let iter = 0;
-    let diff;
-    do {
-        let xb = Math.pow(x, b);
-        let f = xb - b;
-        let logx = Math.log(x);
-        let fprime = logx * xb - 1;
-        if (Math.abs(fprime) < 1e-15) {
-            break;
-        }
-        diff = f / fprime;
-        b = b - diff;
-        iter++;
-    } while (iter < MAX_ITER && Math.abs(diff) > TOL);
-    return b.toString(16);
+    return b;
 }
+
+// Solve x^b = b for x = 2
+let x = 2.0;
+let result = newtonsMethod(x, 0.6);
+console.log(`Solution: b = ${result}`);
+
+// Convert to hexadecimal
+let wordResult = result.toString(36);
+console.log(`Word: ${wordResult}`);
+
+// Verification
+let verification = Math.pow(x, result);
+console.log(`Verification: ${x}^${result} = ${verification}`);
+console.log(`Error: ${Math.abs(verification - result)}`);
 
