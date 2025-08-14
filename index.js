@@ -1,31 +1,16 @@
-function bigIntToHex(bigInt) {
-  if (bigInt === 0n) return "0";
-  const hexChars = "0123456789abcdef";
-  let result = "";
-  let value = bigInt < 0n ? -bigInt : bigInt; // handle negative BigInt if needed
-  while (value > 0n) {
-    const remainder = value % 16n;
-    result = hexChars[Number(remainder)] + result;
-    value = value / 16n;
-  }
-  if (bigInt < 0n) {
-    result = "-" + result;
-  }
-  return result;
-}
 function cipher(word) {
-let x = parseInt(word, 36)
-exp = BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)
-return bigIntToHex(BigInt(exp))
+ let x = parseInt(word, 36)
+ exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
+ return BigInt(exp)
 }
 function gen() {
-let x = Math.random()*10**16
-exp = BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)
-return bigIntToHex(BigInt(exp))
+ let x = Math.random()*10**16
+ exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
+ return BigInt(exp)
 }
 function base10(hexString) {
- let bigIntValue = BigInt("0x" + hexString);
- let decimalString = bigIntValue.toString(10);
+ let BigIntValue = BigInt("0x" + hexString);
+ let decimalString = BigIntValue.toString(10);
  return decimalString
 }
 // Newton's Method implementation in JavaScript
@@ -47,8 +32,8 @@ function newtonsMethod(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations =
     return b;
 }
 function decipher(x) {
-x = BigInt(base10(BigInt(parseInt(x))))
-let result = BigInt(newtonsMethod(base10(BigInt(x)), 0.6)).toExponential(-64);
+x = parseInt(BigInt(base10(parseInt(x))))
+let result = newtonsMethod(parseInt(BigInt(base10(x)))), 0.6).toString().toExponential(-64);
 console.log(`Solution: b = ${result}`);
 
 // Convert to base36
