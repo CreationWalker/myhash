@@ -1,13 +1,12 @@
 function cipher(word) {
 let x = parseInt(word, 36)
-let exp = BigInt(parseInt(BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)))
-return exp.toString(16)
+let exp = BigInt(parseInt(BigInt(Math.pow(x, 1/x).toExponential(64))*10**64).toString(16))
+return exp
 }
 function gen() {
 let x = Math.random()*10**16
-let num = Math.pow(x, 1/x).toExponential(64)*10**64
-let exp = BigInt(parseInt(BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)))
-return exp.toString(16)
+let exp = BigInt(BigInt(Math.pow(x, 1/x).toExponential(64)*10**64).toString(16))
+return exp
 }
 function base16(word) {
     BigInt(word).toString(16)
@@ -35,7 +34,7 @@ function newtonsMethod(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations =
 }
 function decipher(x) {
 x = BigInt(base10(BigInt(x)))
-let result = BigInt(newtonsMethod(base10(x), 0.6)).toExponential(-64));
+let result = BigInt(newtonsMethod(base10(x), 0.6)).toExponential(-64);
 console.log(`Solution: b = ${result}`);
 
 // Convert to base36
