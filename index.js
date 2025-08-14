@@ -10,9 +10,6 @@ let exp = parseInt(Math.pow(x, 1/x).toExponential(64).replaceAll('0', '').replac
 let b16 = exp.toString(16)
 return b16
 }
-function base16(word) {
-    word.toString(16)
-}
 function base10(n) {
     return parseInt(n, 16)
 }
