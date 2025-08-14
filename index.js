@@ -1,12 +1,27 @@
+function bigIntToHex(bigInt) {
+  if (bigInt === 0n) return "0";
+  const hexChars = "0123456789abcdef";
+  let result = "";
+  let value = bigInt < 0n ? -bigInt : bigInt; // handle negative BigInt if needed
+  while (value > 0n) {
+    const remainder = value % 16n;
+    result = hexChars[Number(remainder)] + result;
+    value = value / 16n;
+  }
+  if (bigInt < 0n) {
+    result = "-" + result;
+  }
+  return result;
+}
 function cipher(word) {
 let x = parseInt(word, 36)
-let exp = BigInt(parseInt(BigInt(Math.pow(x, 1/x).toExponential(64))*10**64).toString(16))
-return exp
+let exp = BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)
+return bigIntToHex(exp)
 }
 function gen() {
 let x = Math.random()*10**16
-let exp = BigInt(BigInt(Math.pow(x, 1/x).toExponential(64)*10**64).toString(16))
-return exp
+let exp = BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)
+return bigIntToHex(exp)
 }
 function base16(word) {
     BigInt(word).toString(16)
@@ -33,7 +48,7 @@ function newtonsMethod(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations =
     return b;
 }
 function decipher(x) {
-x = BigInt(base10(BigInt(x)))
+x = BigInt(base10(BigInt(parseInt(x))))
 let result = BigInt(newtonsMethod(base10(x), 0.6)).toExponential(-64);
 console.log(`Solution: b = ${result}`);
 
