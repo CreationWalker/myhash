@@ -17,7 +17,7 @@ function base10(n) {
     n.toString(10)
 }
 // Newton's Method implementation in JavaScript
-function newtonsMethod(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
+function decipher(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
     let b = initialGuess;
     for (let i = 0; i < maxIterations; i++) {
         // f(b) = x^b - b
