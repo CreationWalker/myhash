@@ -14,6 +14,9 @@ return b16
 function base16(word) {
     word.toString(16)
 }
+function base10(n) {
+    n.toString(10)
+}
 function decipher(x) {
     if (typeof x !== 'number') {
         x = Number(x);
