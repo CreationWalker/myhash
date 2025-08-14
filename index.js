@@ -1,19 +1,19 @@
 function cipher(word) {
 let x = parseInt(word, 36)
 let exp = BigInt(parseInt(BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)))
-return parseInt(exp).toString(16)
+return exp.toString(16)
 }
 function gen() {
 let x = Math.random()*10**16
 let num = Math.pow(x, 1/x).toExponential(64)*10**64
 let exp = BigInt(parseInt(BigInt(Math.pow(x, 1/x).toExponential(64)*10**64)))
-return parseInt(exp).toString(16)
+return exp.toString(16)
 }
 function base16(word) {
-    word.toString(16)
+    BigInt(word).toString(16)
 }
 function base10(n) {
-    n.toString(10)
+    BigInt(n).toString(10)
 }
 // Newton's Method implementation in JavaScript
 function newtonsMethod(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
