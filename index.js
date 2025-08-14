@@ -1,4 +1,5 @@
 function bigIntToHex(bigInt) {
+  bigInt = BigInt(bigInt)
   if (bigInt === 0n) return "0";
   const hexChars = "0123456789abcdef";
   let result = "";
