@@ -31,8 +31,6 @@ function newtonsMethod(x = base10(x), initialGuess = 0.6, tolerance = 1e-12, max
     }
     return b;
 }
-
-// Solve x^b = b for x = 2
 function decipher(x) {
 let result = parseInt(newtonsMethod(base10(x), 0.6).toExponential(64)*10**64);
 console.log(`Solution: b = ${result}`);
