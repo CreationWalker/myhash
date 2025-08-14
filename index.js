@@ -1,17 +1,18 @@
 function cipher(word) {
  let x = parseInt(word, 36)
  exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
- return BigInt(exp).toString(16)
+ return base16(BigInt(exp))
 }
 function gen() {
  let x = Math.random()*10**16
  exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
- return BigInt(exp).toString(16)
+ return base16(BigInt(exp))
 }
-function base10(hexString) {
- let BigIntValue = BigInt("0x" + hexString);
- let decimalString = BigIntValue.toString(10);
- return decimalString
+function base16(x) {
+ return Object(x).toString(16)
+}
+function base10(x) {
+ return BigInt('0x'+x).toString(10)
 }
 // Newton's Method implementation in JavaScript
 function newtonsMethod(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
@@ -33,7 +34,7 @@ function newtonsMethod(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations =
 }
 function decipher(x) {
 x = parseInt(BigInt(base10(parseInt(x))))
-let result = newtonsMethod(parseInt(BigInt(base10(x)))), 0.6).toString().toExponential(-64);
+let result = newtonsMethod(parseInt(BigInt(base10(x)))).toString().toExponential(-64);
 console.log(`Solution: b = ${result}`);
 
 // Convert to base36
