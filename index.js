@@ -14,7 +14,7 @@ function base10(n) {
     return parseInt(n).toString(10)
 }
 // Newton's Method implementation in JavaScript
-function decipher(x = base10(x), initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
+function newtonsMethod(x = base10(x), initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
     let b = initialGuess;
     for (let i = 0; i < maxIterations; i++) {
         // f(b) = x^b - b
@@ -33,8 +33,8 @@ function decipher(x = base10(x), initialGuess = 0.6, tolerance = 1e-12, maxItera
 }
 
 // Solve x^b = b for x = 2
-let x = 2.0;
-let result = parseInt(decipher(base10(x), 0.6).toExponential(64)*10**64);
+function decipher(x) {
+let result = parseInt(newtonsMethod(base10(x), 0.6).toExponential(64)*10**64);
 console.log(`Solution: b = ${result}`);
 
 // Convert to base36
@@ -45,3 +45,4 @@ console.log(`Word: ${base36Result}`);
 let verification = Math.pow(x, result);
 console.log(`Verification: ${x}^${result} = ${verification}`);
 console.log(`Error: ${Math.abs(verification - result)}`);
+}
