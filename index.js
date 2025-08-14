@@ -1,12 +1,14 @@
 function cipher(word) {
 let x = parseInt(word, 36)
-let exp = Math.pow(x, 1/x).toExponential(64).replaceAll('00', '').replace('e+', '').replaceAll('1.', '')
-return parseInt(BigInt(exp)).toString(16)
+let num = Math.pow(x, 1/x).toExponential(64)*10**64
+let exp = BigInt(num.replaceAll('00', '').replace('e+', '').replaceAll('1.', ''))
+return parseInt(exp).toString(16)
 }
 function gen() {
 let x = Math.random()*10**16
-let exp = Math.pow(x, 1/x).toExponential(64).replaceAll('00', '').replace('e+', '').replaceAll('1.', '')
-return parseInt(BigInt(exp)).toString(16)
+let num = Math.pow(x, 1/x).toExponential(64)*10**64
+let exp = BigInt(num.replaceAll('00', '').replace('e+', '').replaceAll('1.', ''))
+return parseInt(exp).toString(16)
 }
 function base16(word) {
     word.toString(16)
