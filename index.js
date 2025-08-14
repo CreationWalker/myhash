@@ -33,7 +33,8 @@ function newtonsMethod(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations =
     }
     return b;
 }
-function decipher(x = BigInt(base10(BigInt(x))) {
+function decipher(x) {
+let x = BigInt(base10(BigInt(x))
 let result = parseInt(newtonsMethod(base10(x), 0.6).toExponential(-64));
 console.log(`Solution: b = ${result}`);
 
