@@ -14,7 +14,7 @@ function base16(word) {
     word.toString(16)
 }
 function base10(n) {
-    return n.toString(10)
+    return parseInt(n, 10)
 }
 // Newton's Method implementation in JavaScript
 function decipher(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
