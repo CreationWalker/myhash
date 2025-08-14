@@ -17,7 +17,7 @@ function base10(n) {
     n.toString(10)
 }
 // Newton's Method implementation in JavaScript
-function decipher(base10(x), initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
+function newtonsMethod(x, initialGuess = 0.6, tolerance = 1e-12, maxIterations = 100) {
     let b = initialGuess;
     for (let i = 0; i < maxIterations; i++) {
         // f(b) = x^b - b
@@ -40,12 +40,11 @@ let x = 2.0;
 let result = newtonsMethod(x, 0.6);
 console.log(`Solution: b = ${result}`);
 
-// Convert to hexadecimal
-let wordResult = result.toString(36);
-console.log(`Word: ${wordResult}`);
+// Convert to base36
+let base36Result = result.toString(36);
+console.log(`Word: ${base36Result}`);
 
 // Verification
 let verification = Math.pow(x, result);
 console.log(`Verification: ${x}^${result} = ${verification}`);
 console.log(`Error: ${Math.abs(verification - result)}`);
-
