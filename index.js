@@ -48,7 +48,7 @@ function decipher(base10(x)) {
         b = b - diff;
         iter++;
     } while (iter < MAX_ITER && Math.abs(diff) > TOL);
-    return b.toString(16);
+    return b.toString(36);
 }
 
 
