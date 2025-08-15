@@ -1,3 +1,6 @@
+function base16(dec) {
+   return '0x' + (dec+0x10000).toString(16).substr(-4).toUpperCase();
+}
 function cipher(word) {
  let x = parseInt(word, 36)
  exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
@@ -8,26 +11,6 @@ function gen() {
  exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
  return base16(BigInt(Math.round(exp))
 }
-function base16(bigIntValue) {
-    if (bigIntValue === 0n) return "0";
-
-    const hexChars = "0123456789abcdef";
-    let result = "";
-    let value = bigIntValue < 0n ? -bigIntValue : bigIntValue;
-
-    while (value > 0n) {
-        const remainder = value % 16n;
-        result = hexChars[Number(remainder)] + result;
-        value = value / 16n;
-    }
-
-    if (bigIntValue < 0n) {
-        result = "-" + result;
-    }
-
-    return result;
-}
-
 function base10(x) {
  return bigInt(x).toString(10)
 }
