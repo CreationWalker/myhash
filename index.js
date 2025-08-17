@@ -1,15 +1,22 @@
-function base16(dec) {
-   return '0x' + (dec+0x10000).toString(16).substr(-4).toUpperCase();
+function base16(number)
+{
+  if (number < 0)
+  {
+    number = 0xFFFFFFFF + number + 1;
+  }
+  return number.toString(16).toUpperCase();
 }
 function cipher(word) {
+ 
  let x = parseInt(word, 36)
  exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
- return base16(BigInt(Math.round(exp))
+
+ return base16(exp)
 }
 function gen() {
  let x = Math.random()*10**16
  exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
- return base16(BigInt(Math.round(exp))
+ return base16(exp)
 }
 function base10(x) {
  return bigInt(x).toString(10)
