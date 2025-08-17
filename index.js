@@ -13,12 +13,12 @@ function cipher(word) {
  let x = parseInt(word, 36)
  exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
 
- return toHex(hex.encode(exp))
+ return toHex(exp)
 }
 function gen() {
  let x = Math.random()*10**16
  exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
- return toHex(hex.encode(exp))
+ return toHex(exp)
 }
 // Newton's Method implementation in JavaScript
 function newtonSolve(xHex, tolerance = 1e-12, maxIter = 1000) {
