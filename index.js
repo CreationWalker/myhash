@@ -1,6 +1,5 @@
-const BigNumber = require('bignumber.js');
 function toHex(decimalStr) {
-    return new BigNumber(decimalStr).toString(16);
+    return new BigInt(decimalStr).toString(16);
 }
 function cipher(word) {
  let x = parseInt(word, 36)
