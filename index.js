@@ -1,15 +1,13 @@
-function toHex(decimalStr) {
-    return new BigInt(decimalStr).toString(16);
-}
+
 function cipher(word) {
  let x = parseInt(word, 36)
  exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
- return toHex(exp)
+ return exp.toString(16)
 }
 function gen() {
  let x = Math.random()*10**16
  exp = BigInt(parseInt(Math.pow(x, 1/x).toExponential(64).split('.')[1])+Math.pow(x, 1/x).toExponential(64).split('.')[0]*10**64)
- return toHex(exp)
+ return exp.toString(16)
 }
 // Newton's Method implementation in JavaScript
 function newtonSolve(xHex, tolerance = 1e-12, maxIter = 1000) {
